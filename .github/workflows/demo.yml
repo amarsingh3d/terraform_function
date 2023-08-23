@@ -23,4 +23,4 @@ jobs:
 
     - name: Copy file to remote server
       run: |
-        ssh -i  ~/.ssh/id_rsa 68.183.88.61 "hostname"
+        ssh -i  ~/.ssh/id_rsa root@68.183.88.61 "hostname"
