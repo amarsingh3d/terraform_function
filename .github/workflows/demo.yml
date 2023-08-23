@@ -1,0 +1,26 @@
+name: Copy to Remote Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        cat ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        #        ssh-keyscan -t rsa $REMOTE_SERVER_IP >> ~/.ssh/known_hosts
+
+    - name: Copy file to remote server
+      run: |
+        echo  ~/.ssh/id_rsa
